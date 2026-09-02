@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+.cache
+
+# Справжні ключі — у .env. У git іде лише .env.example.
+.env
+.env.local
+
+# Допоміжні бази демонстрацій і прогонів — відтворювані, у git не потрібні.
+state/agent_state_*.db

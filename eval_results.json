@@ -1,0 +1,146 @@
+{
+  "total": 6,
+  "passed": 6,
+  "pass_rate": 1.0,
+  "total_cost_usd": 0.250033,
+  "results": [
+    {
+      "scenario_id": "EVAL-01",
+      "kind": "simple",
+      "query": "Коли жив Сенека і до якої філософської школи він належав?",
+      "expected_behavior": "supervisor → factfinder; виклик find_philosopher",
+      "actual": "Луцій Анней Сенека (4 р. до н.е. — 65 р. н.е.) — видатний римський філософ, представник стоїцизму. Крім філософської діяльності, він був політичним діячем, драматургом і письменником. Сенека входить до числа найвизначніших стоїків античного світу.",
+      "pass": true,
+      "latency_ms": 9784,
+      "agents_used": [
+        "factfinder",
+        "input_guard",
+        "output_guard",
+        "supervisor"
+      ],
+      "tools_called": [
+        "find_philosopher"
+      ],
+      "llm_calls": 5,
+      "tokens_in": 34252,
+      "tokens_out": 575,
+      "cost_usd": 0.037127
+    },
+    {
+      "scenario_id": "EVAL-02",
+      "kind": "multi-step",
+      "query": "Хто вплинув на Марка Аврелія і чи могли вони зустрітися?",
+      "expected_behavior": "supervisor → factfinder; get_influences і check_lifespan_overlap",
+      "actual": "**Марк Аврелій (121–180 р. н.е.) — стоїк.**\n\nПрямих впливів у Wikidata не зафіксовано, але історично відомо, що на нього вплинули попередні стоїки, зокрема Епіктет та Зенон Кітійський.\n\n**Щодо можливості зустрічей:**\n- **Епіктет (50–135 р. н.е.)**: життя перетиналися. Марк Аврелій народився в 121 р., коли Епіктету було 71 рік; Епіктет помер в 135 р., коли Марку було 14 років. Фізично зустріч була ",
+      "pass": true,
+      "latency_ms": 14774,
+      "agents_used": [
+        "factfinder",
+        "input_guard",
+        "output_guard",
+        "supervisor"
+      ],
+      "tools_called": [
+        "find_philosopher",
+        "get_influences"
+      ],
+      "llm_calls": 5,
+      "tokens_in": 34666,
+      "tokens_out": 1180,
+      "cost_usd": 0.040566
+    },
+    {
+      "scenario_id": "EVAL-03",
+      "kind": "rag-heavy",
+      "query": "З чого починати вивчення стоїцизму і яких помилок уникати?",
+      "expected_behavior": "supervisor → researcher; виклик search_knowledge",
+      "actual": "**З чого починати вивчення стоїцизму:**\n\n1. **Ключові тексти** — почніть із «Роздумів» Марка Аврелія та «Листів до Луцілія» Сенеки. Обидва читаються без попередньої підготовки.\n\n2. **Основна ідея** — стоїцизм вчить розрізняти те, що в нашій владі (власні судження та вчинки), і те, що поза нею. Керувати можна лише першим.\n\n**Типова помилка новачка:**\n\nПлутати стоїчну незворушність із байдужістю. Це",
+      "pass": true,
+      "latency_ms": 15064,
+      "agents_used": [
+        "input_guard",
+        "output_guard",
+        "researcher",
+        "supervisor"
+      ],
+      "tools_called": [
+        "search_knowledge"
+      ],
+      "llm_calls": 2,
+      "tokens_in": 5529,
+      "tokens_out": 458,
+      "cost_usd": 0.007819
+    },
+    {
+      "scenario_id": "EVAL-04",
+      "kind": "cross-agent",
+      "query": "Підготуй тижневий блок зі стоїцизму: методика, безкоштовні тексти і скільки лишилось у бюджеті.",
+      "expected_behavior": "supervisor → curator; план щонайменше з трьох кроків, кілька інструментів",
+      "actual": "[search_knowledge] Стоїцизм вчить розрізняти те, що в нашій владі, і те, що поза нею: керувати можна лише власними судженнями та вчинками. Ключові тексти для початку -- «Роздуми» Марка Аврелія та «Листи до Луцілія» Сенеки, обидва читаються без попередньої підготовки. Типова помилка новачка -- плутати стоїчну незворушність із байдужістю: стоїк діє активно, але не прив'язує спокій до результату.\n---",
+      "pass": true,
+      "latency_ms": 27044,
+      "agents_used": [
+        "curator",
+        "input_guard",
+        "output_guard",
+        "supervisor"
+      ],
+      "tools_called": [
+        "search_knowledge",
+        "find_texts",
+        "get_budget_status"
+      ],
+      "llm_calls": 7,
+      "tokens_in": 74205,
+      "tokens_out": 1198,
+      "cost_usd": 0.080195
+    },
+    {
+      "scenario_id": "EVAL-05",
+      "kind": "hitl-flow",
+      "query": "Замов друковане видання «Роздумів» Марка Аврелія з науковим коментарем, один примірник. Безкоштовний електронний текст не підходить: мені потрібен саме коментар.",
+      "expected_behavior": "curator → place_print_order → interrupt() → згода → замовлення створено",
+      "actual": "[get_budget_status] {\"month\": \"2026-09\", \"spent\": 12.5, \"limit\": 60.0, \"remaining\": 47.5}\n\n[search_catalog] {\"query\": \"Роздуми Марк Аврелій коментар\", \"found\": 1, \"items\": [{\"id\": \"CAT-009\", \"title\": \"Роздуми (з науковим коментарем)\", \"author\": \"Марк Аврелій\", \"publisher\": \"Астролябія\", \"series\": \"Античний коментар\", \"price_eur\": 34.0, \"lang\": \"uk\", \"isbn\": \"978-617-664-201-3\"}]}\n\n[search_catalog]",
+      "pass": true,
+      "latency_ms": 14940,
+      "agents_used": [
+        "approval_gate",
+        "curator",
+        "input_guard",
+        "output_guard",
+        "supervisor"
+      ],
+      "tools_called": [
+        "get_budget_status",
+        "search_catalog",
+        "place_print_order"
+      ],
+      "llm_calls": 7,
+      "tokens_in": 72340,
+      "tokens_out": 891,
+      "cost_usd": 0.076795
+    },
+    {
+      "scenario_id": "EVAL-06",
+      "kind": "audit",
+      "query": "Які перевірки безпеки спрацювали на мої запити?",
+      "expected_behavior": "supervisor → auditor; виклик read_audit, без тексту атаки у відповіді",
+      "actual": "На вашу сесію спрацювали такі перевірки безпеки:\n\n**1. Guardrail (охоронна система)**\nЦе основна перевірка, що аналізує ваші запити. Вона спрацювала 11 разів і дозволила ваші запити. Один раз (о 19:02:14) система заблокувала спробу використати інструмент пошуку текстів — це означає, що запит не відповідав правилам безпеки для цієї операції.\n\n**2. HITL (людська перевірка)**\nЦе означає, що людина-мо",
+      "pass": true,
+      "latency_ms": 7464,
+      "agents_used": [
+        "auditor",
+        "input_guard",
+        "output_guard",
+        "supervisor"
+      ],
+      "tools_called": [
+        "read_audit"
+      ],
+      "llm_calls": 2,
+      "tokens_in": 4661,
+      "tokens_out": 574,
+      "cost_usd": 0.007531
+    }
+  ]
+}

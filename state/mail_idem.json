@@ -1,0 +1,11 @@
+{
+  "eb256bc07535243260ba7747c2818ebf6ea9550fb28c1135549d7c5a3667999c": {
+    "status": "done",
+    "result": {
+      "sent": true,
+      "message_id": "MSG-EB256BC0",
+      "message": "Список з 4 позицій надіслано на reader@example.com"
+    },
+    "ts": "2026-09-01T19:00:24.424210+00:00"
+  }
+}

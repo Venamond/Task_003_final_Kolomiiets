@@ -1,0 +1,38 @@
+
+▶ pytest без моделі
+  ✅ 20.4 с → outputs/pytest_output.txt
+
+▶ demo1: MCP зсередини
+  ✅ 0.2 с → outputs/demo1_mcp_server.txt
+
+▶ demo5: рубежі захисту
+  ✅ 0.0 с → outputs/demo5_guardrails.txt
+
+▶ red-team без моделі
+  ✅ 0.5 с → outputs/red_team_offline.txt
+
+▶ demo2: MCP + LangGraph
+  ✅ 10.5 с → outputs/demo2_mcp_langgraph.txt
+
+▶ demo3: MAS на трьох запитах
+  ✅ 38.0 с → outputs/demo3_mas.txt
+
+▶ demo4: обрив і відновлення
+  ✅ 17.5 с → outputs/demo4_persistence.txt
+
+▶ demo6: підтвердження людиною
+  ✅ 85.6 с → outputs/demo6_hitl.txt
+
+▶ demo7: резервний провайдер
+  ❌ 45.0 с → outputs/demo7_fallback.txt
+
+▶ оцінки
+  ✅ 91.2 с → outputs/evals.txt
+
+▶ red-team повністю
+  ✅ 56.7 с → outputs/red_team.txt
+
+══════════════════════════════════════════════════════════════════════════════
+  Успішно: 10 з 11
+  Усі виводи — у теці outputs/
+══════════════════════════════════════════════════════════════════════════════

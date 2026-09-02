@@ -1,0 +1,29 @@
+{
+  "library": {
+    "name": "library",
+    "tools": {
+      "search_catalog": "2df0461dd76fc6b78fd6a2d9d490591ad6c9e615fd8e9035072d04381b2fb9d8",
+      "get_order": "a01c3405b013dfc62d7392aa65a3ae2af03b1331c62235df692e062e7d7b8257",
+      "get_budget_status": "4f3dcf405ef166cf4d6215409e61b5a460a8df0fca80594a8e6dda4b8c892dd7",
+      "place_print_order": "de8c582595d3d78f930d272ce03ce6f2fccc8c10e494a88da3ac159a98c6d8d2",
+      "cancel_order": "379bf90ca9c0e18b7663e8827c12a451962f47b10f26986f22aebf6df1976732"
+    },
+    "resources": [
+      "catalog://overview",
+      "policy://budget"
+    ],
+    "prompts": [
+      "study_reply"
+    ]
+  },
+  "mail": {
+    "name": "mail",
+    "tools": {
+      "send_reading_list": "199ae0054a76c680514269f08572aab829ea6fd60cc9e54373df30ce9b4957a0"
+    },
+    "resources": [
+      "policy://mail"
+    ],
+    "prompts": []
+  }
+}

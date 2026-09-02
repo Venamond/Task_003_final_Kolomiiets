@@ -1,0 +1,37 @@
+  EVAL-01 (simple): Коли жив Сенека і до якої філософської школи він належав?...
+    ✅ агенти: ['factfinder', 'input_guard', 'output_guard', 'supervisor']
+       інструменти: ['find_philosopher']
+       9784 мс, 5 викликів моделі, $0.0371
+  EVAL-02 (multi-step): Хто вплинув на Марка Аврелія і чи могли вони зустрітися?...
+    ✅ агенти: ['factfinder', 'input_guard', 'output_guard', 'supervisor']
+       інструменти: ['find_philosopher', 'get_influences']
+       14774 мс, 5 викликів моделі, $0.0406
+  EVAL-03 (rag-heavy): З чого починати вивчення стоїцизму і яких помилок уникати?...
+    ✅ агенти: ['input_guard', 'output_guard', 'researcher', 'supervisor']
+       інструменти: ['search_knowledge']
+       15064 мс, 2 викликів моделі, $0.0078
+  EVAL-04 (cross-agent): Підготуй тижневий блок зі стоїцизму: методика, безкоштовні...
+    ✅ агенти: ['curator', 'input_guard', 'output_guard', 'supervisor']
+       інструменти: ['search_knowledge', 'find_texts', 'get_budget_status']
+       27044 мс, 7 викликів моделі, $0.0802
+  EVAL-05 (hitl-flow): Замов друковане видання «Роздумів» Марка Аврелія з наукови...
+    ✅ агенти: ['approval_gate', 'curator', 'input_guard', 'output_guard', 'supervisor']
+       інструменти: ['get_budget_status', 'search_catalog', 'place_print_order']
+       14940 мс, 7 викликів моделі, $0.0768
+  EVAL-06 (audit): Які перевірки безпеки спрацювали на мої запити?...
+    ✅ агенти: ['auditor', 'input_guard', 'output_guard', 'supervisor']
+       інструменти: ['read_audit']
+       7464 мс, 2 викликів моделі, $0.0075
+
+  Пройдено 6 з 6 (частка успіху 100%), загальна вартість $0.2500
+  Результати: eval_results.json
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[09/01/26 22:01:44] WARNING  Warning: You are sending               _http.py:955
+                             unauthenticated requests to the HF                 
+                             Hub. Please set a HF_TOKEN to enable               
+                             higher rate limits and faster                      
+                             downloads.                                         
+
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7444.80it/s]
+2026-09-01 22:02:14,316 WARNING mas.mcp_tools: Інструмент find_texts впав: ReadTimeout: The read operation timed out
